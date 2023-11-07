@@ -1,0 +1,23 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  background-color: #484848;
+  margin-top: 10px;
+  height: 60px;
+  width: 100%;
+  padding: 0 20px 0 20px;
+  .currencyInput{
+    border: 0;
+    text-align: center;
+    background-color: transparent;
+    width: 100%;
+    padding: 0 20px 0 20px;
+
+  }
+
+  .currencyName{
+    width: 50px;
+  }
+}

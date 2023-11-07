@@ -2,8 +2,8 @@ import Settings from "../pages/Settings/Settings";
 import Home from "../pages/Home/Home";
 
 export const RouteNames={
-    HOME:'/curcon-telegram',
-    SETTINGS:'/curcon-telegram/settings',
+    HOME:'/',
+    SETTINGS:'/settings',
 }
 
 export const publicRoutes =[
