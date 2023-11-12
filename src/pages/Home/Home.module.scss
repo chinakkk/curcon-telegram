@@ -1,13 +1,11 @@
 .container {
-  .currentCurrency{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 24px;
-    background-color: #484848;
-    margin-top: 10px;
-    height: 60px;
-    width: 100%;
-  }
 
+}
+.testButton{
+  display: block;
+  margin-top: 20px;
+  margin-left: 90px;
+  background-color: #2C2C2C;
+  padding: 2px 5px;
+  border-radius: 5px;
 }
