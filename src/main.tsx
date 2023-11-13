@@ -5,13 +5,17 @@ import './index.css'
 import {BrowserRouter} from 'react-router-dom'
 import {Provider} from "react-redux";
 import store from "./redux/store";
+import {AppearanceProvider} from "@twa-dev/mark42";
 
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
     <React.StrictMode>
         <BrowserRouter basename={'/curcon-telegram'}>
             <Provider store={store}>
-                <App/>
+                <AppearanceProvider>
+
+                    <App/>
+                </AppearanceProvider>
 
             </Provider>
         </BrowserRouter>

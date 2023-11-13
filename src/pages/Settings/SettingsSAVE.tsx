@@ -1,17 +1,15 @@
+import styles from './Settings.module.scss'
 import {FC, useEffect, useState} from "react"
+import Header from "../../components/Header/Header";
+import CurrencyButton from "../../components/CurrencyButton/CurrencyButton";
 import {BackButton, MainButton} from "@twa-dev/sdk/dist/react";
 import {useNavigate} from 'react-router-dom';
+import {currencyType} from "../../types/types";
 import {useSelector} from "react-redux";
 import {RootState, useAppDispatch} from "../../redux/store";
 import {setCurrencies} from "../../redux/slices/currencySlice";
 import {updateUserCurrencies} from "../../apiService/updateUserCurrencies";
 import {getUserCurrencies} from "../../apiService/getUserCurrencies";
-import {Page, Section} from "@twa-dev/mark42";
-import {currencyType} from "../../types/types";
-import CurrencyButton from "../../components/CurrencyButton/CurrencyButton";
-// import styles from './Settings.module.scss'
-
-
 
 const Settings: FC = () => {
     const [mainButtonIsVisible, setMainButtonIsVisible] = useState(true)
@@ -48,16 +46,14 @@ const Settings: FC = () => {
 
     return (
         <>
-            <Page mode="secondary">
-                <Section
-                    header="Setting active currencies"
-                >
-                    {
-                        currencies.map((currency: currencyType) => <CurrencyButton title={currency.name}
-                                                                                   key={currency.name}/>)
-                    }
-                </Section>
-            </Page>
+            <div className={styles.container}>
+                <Header title={'Настройка активных валют'}/>
+                {
+                    currencies.map((currency: currencyType) => <CurrencyButton title={currency.name}
+                                                                               key={currency.name}/>)
+                }
+
+            </div>
             {/*<button onClick={onClickMainSave} className={styles.testButton}>Save</button>*/}
             {/*<button onClick={onClickBack} className={styles.testButton}>back</button>*/}
             {/*<button onClick={() => getUserCurrencies()} className={styles.testButton}>test*/}

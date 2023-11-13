@@ -39,10 +39,9 @@ const currencySlice = createSlice({
             const currentCurrency = data.currencies.find((currency) => currency.name === action.payload.currencyName)
             if (currentCurrency) currentCurrency.exchangeByUSD = action.payload.exchangeByUSD
         },
-        updateNewRatesExceptOne(data, action: PayloadAction<{ currencyName: string }>) {
+        updateNewRatesExceptOne(data) {
             for (const currency of data.currencies) {
-                if (currency.name !== action.payload.currencyName)
-                    currency.inputValue = data.usdInput * currency.exchangeByUSD
+                    currency.inputValue = (Number(data.usdInput) * Number(currency.exchangeByUSD)).toString()
             }
         }
     }

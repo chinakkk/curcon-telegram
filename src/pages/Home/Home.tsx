@@ -1,6 +1,5 @@
-import styles from './Home.module.scss'
+// import styles from './Home.module.scss'
 import {FC, useEffect, useState} from "react"
-import Header from "../../components/Header/Header";
 import CurrencyInput from "../../components/CurrencyInput/CurrencyInput";
 import {MainButton} from "@twa-dev/sdk/dist/react";
 import {useNavigate} from 'react-router-dom';
@@ -10,6 +9,7 @@ import {currencyType} from "../../types/types";
 import {setCurrencies, setExchangeUsdByName} from "../../redux/slices/currencySlice";
 import {getUserCurrencies} from "../../apiService/getUserCurrencies";
 import {getCurrencies} from "../../apiService/getCurrencies";
+import {Page, Section} from "@twa-dev/mark42";
 
 
 const Home: FC = () => {
@@ -44,19 +44,28 @@ const Home: FC = () => {
 
     return (
         <>
-            <div className={styles.container}>
-                <Header title={'Конвертер валют'}/>
-                {
-                    currencies
-                        .filter((currency: currencyType) => currency.added)
-                        .map((currency: currencyType) => <CurrencyInput currency={currency}
-                                                                        key={currency.name}/>)
-                }
-            </div>
+            <Page mode="secondary">
+                <Section
+                    header="Currency converter"
+                >
+                    {
+                        currencies
+                            .filter((currency: currencyType) => currency.added)
+                            .map((currency: currencyType) => <CurrencyInput currency={currency}
+                                                                            key={currency.name}/>)
+                    }
+                </Section>
             {/*<button onClick={onClickMainSettings} className={styles.testButton}>Settings</button>*/}
             {
                 mainButtonIsVisible && <MainButton text={'Settings'} onClick={onClickMainSettings}/>
             }
+            </Page>
+
+
+
+
+
+
         </>
 
     )
