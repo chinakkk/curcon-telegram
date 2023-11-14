@@ -6,6 +6,11 @@ import {setUsdInput, updateNewRatesExceptOne} from "../../redux/slices/currencyS
 import {useSelector} from "react-redux";
 import debounce from 'lodash.debounce'
 import {Cell} from "@twa-dev/mark42";
+import rubSVG from '../../assets/RUB.svg'
+import usdSVG from '../../assets/USD.svg'
+import eurSVG from '../../assets/EUR.svg'
+import kztSVG from '../../assets/KZT.svg'
+import tonSVG from '../../assets/TON.svg'
 import defaultSVG from '../../assets/default.svg'
 
 
@@ -21,7 +26,7 @@ const CurrencyInput: FC<CurrencyInputProps> = ({currency}) => {
 
     const debounceInput = useCallback(debounce((str) => {
         setInputValue(str)
-    }, 500), [])
+    }, 0), [])
 
     const onChangeInput = (inputValue: string) => {
         debounceInput(inputValue)
@@ -39,24 +44,31 @@ const CurrencyInput: FC<CurrencyInputProps> = ({currency}) => {
         const roundingThreeNumber = (Math.round(Number(currency.inputValue) * 1000) / 1000).toString()
         setLocalInputValue(roundingThreeNumber)
     }, [usdInput])
-    const setSRC = (currencyName:string) => {
-        if (currencyName===currency.name) return `/src/assets/${currencyName}.svg`
+
+
+    const setSRC = () => {
+        if (currency.name === 'TON') return tonSVG
+        if (currency.name === 'USD') return usdSVG
+        if (currency.name === 'KZT') return kztSVG
+        if (currency.name === 'RUB') return rubSVG
+        if (currency.name === 'EUR') return eurSVG
         return defaultSVG
     }
 
     return (
         <Cell
             className={styles.container}
-            after={<img src={setSRC(currency.name)} alt={'currency icon'}/>}
+            after={<img className={styles.currencyIcon} src={setSRC()} alt={'currency icon'}/>}
         >
-                <span className={styles.inputBlock}>
-                    {currency.name}
-                    <input
-                        value={localInputValue}
-                        onChange={(event) => onChangeInput(event.target.value)}
-                        className={styles.currencyInput}
-                        type="number"
-                    /></span>
+            <div className={styles.inputBlock}>
+                    <span className={styles.currencyName}>{currency.name}</span>
+                <input
+                    value={localInputValue}
+                    onChange={(event) => onChangeInput(event.target.value)}
+                    className={styles.currencyInput}
+                    type="number"
+                />
+            </div>
 
         </Cell>
     )

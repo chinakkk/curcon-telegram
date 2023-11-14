@@ -2,9 +2,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
-
+  .currencyIcon{
+    width: 18px;
+  }
   .inputBlock{
     display: flex;
+    .currencyName{
+      width: 50px;
+
+    }
 
     .currencyInput {
       border: 0;
@@ -15,9 +21,6 @@
     }
   }
 
-  .currencyName {
-    width: 50px;
-  }
 
   input::-webkit-outer-spin-button,
   input::-webkit-inner-spin-button {
