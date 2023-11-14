@@ -5,9 +5,10 @@ Completed
 
 ## Description
 
-Test task - Telegram bot implementation to simulate currency exchange rate translation using Telegram Mini Apps.
+We needed to implement Telegram mini apps to simulate currency exchange using [@twa-dev](https://github.com/twa-dev)
 
-## Used libraries
+## Stack
 
-[@twa-dev](https://github.com/twa-dev)
-
+- React
+- Redux-toolkit
+- Typescript
